@@ -1,0 +1,2 @@
+This folder stores runtime output (redacted files + signed proof certificates).
+Its contents are git-ignored; this file only keeps the empty folder in the repo.
