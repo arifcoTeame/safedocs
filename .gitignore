@@ -18,7 +18,6 @@ dist/
 # ---- Runtime output (keep the folder, drop its contents) ----
 storage/*
 !storage/.gitkeep
-!storage/placeholder.txt
 
 # ---- Generated / demo artifacts ----
 sample_docs/sample_contract.pdf
