@@ -1,0 +1,31 @@
+# ---- Secrets (never commit) ----
+.env
+keys/
+*.pem
+
+# ---- Python caches / build ----
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+pytest-cache-files-*
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+
+# ---- Runtime output (keep the folder, drop its contents) ----
+storage/*
+!storage/.gitkeep
+
+# ---- Generated / demo artifacts ----
+sample_docs/sample_contract.pdf
+*.pptx
+*.zip
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
