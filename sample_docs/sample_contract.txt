@@ -1,0 +1,12 @@
+عقد إيجار
+اسم العميل: خالد بن سعيد العتيبي
+رقم الهوية: 1098234567
+الجوال: +966 55 123 4567
+البريد الإلكتروني: khalid.otaibi@example.com
+العنوان: حي النرجس، الرياض
+
+Lease Agreement
+Applicant: Sarah Miller
+Email: sarah.miller@example.com
+IBAN: SA0380000000608010167519
+Card: 4111 1111 1111 1111

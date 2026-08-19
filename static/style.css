@@ -1,0 +1,199 @@
+/* Author: Arif Alsuhaimi */
+:root{
+  --ink:#10233B;           /* primary ink navy */
+  --ink-soft:#39465C;
+  --paper:#F5EFE3;         /* warm off-white document paper */
+  --paper-2:#EFE7D8;       /* slightly deeper warm tint */
+  --surface:#FFFDF8;       /* warm white — cards */
+  --line:#E7DDCB;          /* warm hairline border */
+  --muted:#6E6656;         /* warm muted text */
+  --seal:#A6242E;          /* wax-seal crimson — the one bold accent */
+  --seal-dark:#8A1D25;
+  --cleared:#147A5F;       /* verified green, used sparingly */
+  --bar:#111418;
+  --radius:18px;
+  --radius-sm:12px;
+  --shadow:0 1px 2px rgba(16,35,59,.05), 0 24px 48px -30px rgba(16,35,59,.30);
+  --shadow-sm:0 1px 2px rgba(16,35,59,.05), 0 10px 24px -18px rgba(16,35,59,.28);
+  --serif:"Fraunces","Amiri",Georgia,"Times New Roman",serif;
+  --sans:"Inter","IBM Plex Sans Arabic",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.65;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* atom-dots — a very light dotted field, background only */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.55;
+  background:radial-gradient(circle at 1px 1px, rgba(16,35,59,.045) 1px, transparent 0);
+  background-size:26px 26px}
+
+/* Language toggle (top corner, follows text direction) */
+.lang-toggle{position:fixed;top:16px;inset-inline-end:18px;z-index:5;
+  font-family:var(--sans);font-size:.85rem;font-weight:600;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:999px;
+  padding:.4rem 1rem;cursor:pointer;box-shadow:var(--shadow-sm);
+  transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease}
+.lang-toggle:hover{border-color:var(--ink-soft);transform:translateY(-1px)}
+
+/* Masthead ---------------------------------------------------------------- */
+.masthead{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:52px 24px 22px;text-align:center}
+.brand-logo{display:block;height:76px;width:auto;margin:0 auto 14px;
+  filter:drop-shadow(0 10px 22px rgba(16,35,59,.16))}
+.wordmark{display:inline-flex;align-items:center;justify-content:center;gap:.5rem}
+.wordmark .name{font-family:var(--serif);font-weight:600;font-size:2.5rem;letter-spacing:-.015em;color:var(--ink)}
+/* Unified tagline — small, elegant, calm */
+.tagline{margin:.55rem 0 0;color:var(--muted);font-size:1.02rem;font-weight:500;letter-spacing:.02em}
+
+/* Panels ------------------------------------------------------------------ */
+main{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:14px 24px 44px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:30px;margin-bottom:24px}
+.is-hidden{display:none}
+
+.step-head{display:flex;align-items:center;gap:.7rem;margin-bottom:16px}
+.step-num{width:32px;height:32px;flex:none;display:grid;place-items:center;border-radius:50%;
+  background:var(--ink);color:#fff;font-weight:600;font-size:1rem;font-family:var(--sans);
+  box-shadow:0 0 0 4px rgba(16,35,59,.06)}
+.step-head h2{margin:0;font-family:var(--serif);font-weight:600;font-size:1.6rem;letter-spacing:-.01em}
+
+/* Dropzone ---------------------------------------------------------------- */
+.drop{display:flex;flex-direction:column;align-items:center;gap:.4rem;cursor:pointer;
+  border:1.5px dashed var(--line);border-radius:var(--radius-sm);padding:40px 20px;text-align:center;
+  background:rgba(255,253,248,.5);transition:border-color .18s ease, background .18s ease}
+.drop:hover,.drop.drag{border-color:var(--seal);background:#FBF3EE}
+.drop-icon{font-size:1.8rem;color:var(--ink-soft)}
+.drop-main{font-weight:600;font-size:1.05rem}
+.drop-sub{font-size:.85rem;color:var(--muted)}
+
+/* Buttons ----------------------------------------------------------------- */
+button,.primary,.ghost{font-family:var(--sans);font-size:.98rem;font-weight:600;border-radius:var(--radius-sm);
+  cursor:pointer;padding:.68rem 1.3rem;border:1px solid transparent;text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background .18s ease, border-color .18s ease, transform .18s ease, box-shadow .18s ease}
+.primary{background:var(--seal);color:#fff;box-shadow:0 10px 22px -12px rgba(166,36,46,.55)}
+.primary:hover{background:var(--seal-dark);transform:translateY(-1px);box-shadow:0 14px 26px -12px rgba(166,36,46,.6)}
+.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.ghost:hover{border-color:var(--ink-soft);background:rgba(16,35,59,.03)}
+#sample-btn{margin-top:16px}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:20px}
+
+/* Review ------------------------------------------------------------------ */
+.review-meta{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:10px;font-size:.85rem;color:var(--muted)}
+.review-meta .chip{background:var(--paper-2);border-radius:999px;padding:.2rem .8rem}
+.review-meta .chip-engine{background:var(--ink);color:#fff}
+.hint{font-size:.9rem;color:var(--ink-soft);background:#FBF6EC;border:1px solid var(--line);
+  border-radius:var(--radius-sm);padding:.7rem .9rem;margin:0 0 16px}
+.spanlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;
+  max-height:360px;overflow:auto}
+.spanitem{display:flex;align-items:center;gap:.7rem;border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:.65rem .85rem;background:var(--surface);transition:border-color .15s ease, box-shadow .15s ease}
+.spanitem:hover{box-shadow:var(--shadow-sm)}
+.spanitem input{width:18px;height:18px;accent-color:var(--seal);flex:none}
+.spanitem .kind{font-weight:600;text-transform:capitalize}
+/* PII type badges — one colour per kind, so the type reads at a glance */
+.badge{font-size:.74rem;font-weight:600;padding:.18rem .62rem;border-radius:999px;flex:none;
+  font-family:var(--sans);white-space:nowrap;letter-spacing:.01em}
+.badge-name{background:#E7EDFF;color:#2B3F8C}
+.badge-national_id{background:#F7E7D6;color:#8F531A}
+.badge-email{background:#E1F1E9;color:#147A5F}
+.badge-iban{background:#EAE3F7;color:#5B3B9A}
+.badge-phone{background:#DEF0F4;color:#1C6B82}
+.badge-address{background:#FBE7EE;color:#A6244A}
+.badge-credit_card{background:#F9E4E4;color:#A62424}
+.badge-dob{background:#EFE9DD;color:#7A6A4A}
+.badge-ip_address,.badge-field{background:var(--paper-2);color:var(--muted)}
+.spanitem .val{font-family:var(--mono);font-size:.82rem;color:var(--ink-soft);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:190px;direction:ltr}
+.spanitem .spacer{flex:1}
+.tag{font-size:.72rem;padding:.12rem .5rem;border-radius:6px;font-family:var(--sans)}
+.tag.lang{background:var(--paper-2);color:var(--ink-soft)}
+.tag.conf-hi{background:#E1F1E9;color:var(--cleared)}
+.tag.conf-lo{background:#F7E7D6;color:#8F531A}
+
+/* Select bar -------------------------------------------------------------- */
+.selectbar{display:flex;align-items:center;gap:.5rem;margin-bottom:12px;font-size:.85rem}
+.link{background:none;border:none;color:var(--seal);padding:.1rem .2rem;cursor:pointer;font:inherit;font-weight:600}
+.link:hover{text-decoration:underline}
+.selectbar .dot{color:var(--line)}
+.spanitem.is-lo{border-color:#EAD3AE;background:#FEFAF2}
+
+/* Button spinner ---------------------------------------------------------- */
+.spinner{width:15px;height:15px;border-radius:50%;border:2px solid rgba(255,255,255,.45);
+  border-top-color:#fff;margin-inline-start:.5rem;display:none;animation:spin .7s linear infinite}
+.primary.is-busy .spinner{display:inline-block}
+.primary.is-busy .btn-label{opacity:.75}
+button:disabled{opacity:.7;cursor:progress}
+.drop.is-busy{opacity:.6;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Result ------------------------------------------------------------------ */
+.seal{display:flex;align-items:center;gap:.9rem;background:#FBF1F0;border:1px solid #EFD8DA;
+  border-radius:var(--radius-sm);padding:.85rem 1rem;margin-bottom:16px}
+.seal-mark{width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:var(--seal);color:#fff;font-size:1.35rem;box-shadow:0 0 0 5px rgba(166,36,46,.12)}
+.seal-text{display:flex;flex-direction:column;line-height:1.35}
+.seal-text strong{color:var(--seal)}
+.seal-text span{font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.preview{background:#0F1A2B;color:#E7ECF3;border-radius:var(--radius-sm);padding:16px;overflow:auto;
+  max-height:300px;font-family:var(--mono);font-size:.82rem;line-height:1.7;white-space:pre-wrap}
+
+/* DWS operations panel ---------------------------------------------------- */
+.dws-ops{border:1px solid #CFE2DA;background:#F1F8F4;border-radius:var(--radius-sm);padding:.8rem 1rem;margin-bottom:14px}
+.dws-ops-head{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--ink-soft);margin-bottom:.45rem}
+.dws-badge{background:var(--cleared);color:#fff;border-radius:6px;padding:.12rem .55rem;font-size:.72rem;
+  font-family:var(--sans);font-weight:600;letter-spacing:.02em}
+.dws-ops ol{margin:0;padding-inline-start:1.2rem;font-family:var(--mono);
+  font-size:.76rem;color:var(--ink-soft);line-height:1.95}
+
+/* Verify / trust ---------------------------------------------------------- */
+.verify{border:1px solid var(--line);border-radius:var(--radius-sm);padding:.85rem 1rem;margin:14px 0;background:var(--surface)}
+.verify-row{display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap}
+.verify-state{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.verify-state.ok{color:var(--cleared)}
+.verify-state.bad{color:var(--seal);font-weight:600}
+.verify-actions{display:flex;gap:.4rem}
+.ghost.sm{padding:.4rem .8rem;font-size:.85rem}
+.ghost.danger{color:var(--seal);border-color:#E6C9CC}
+.ghost.danger:hover{border-color:var(--seal);background:rgba(166,36,46,.04)}
+.verify-hint{font-size:.8rem;color:var(--muted);margin:.55rem 0 0}
+
+/* Toast ------------------------------------------------------------------- */
+.toast{position:fixed;inset-block-end:24px;inset-inline:0;margin-inline:auto;width:max-content;
+  max-width:90vw;z-index:20;padding:.75rem 1.15rem;border-radius:var(--radius-sm);font-size:.9rem;
+  font-weight:500;color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.4)}
+.toast-err{background:var(--seal)}
+.toast-warn{background:#96591C}
+
+/* Footer ------------------------------------------------------------------ */
+footer{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:0 24px 44px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  gap:.7rem;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.foot-note{line-height:1.7}
+.engine{font-family:var(--mono);background:var(--ink);color:#fff;border-radius:6px;padding:.18rem .6rem;font-size:.78rem}
+.engine.is-dws{background:var(--cleared)}
+footer code{background:var(--paper-2);border-radius:5px;padding:.05rem .35rem;font-size:.9em}
+
+/* Responsive -------------------------------------------------------------- */
+@media (max-width:600px){
+  .masthead{padding:64px 18px 18px}
+  .brand-logo{height:64px}
+  .wordmark .name{font-size:2rem}
+  .tagline{font-size:.95rem}
+  main{padding:10px 16px 36px}
+  .panel{padding:22px 18px}
+  .step-head h2{font-size:1.35rem}
+  .spanitem .val{max-width:120px}
+  .actions .primary,.actions .ghost{flex:1 1 auto}
+  .lang-toggle{top:12px;inset-inline-end:12px;padding:.35rem .8rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<!-- SafeDocs — Author: Arif Alsuhaimi -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SafeDocs — Redact. Prove. Release.</title>
+<link rel="icon" type="image/png" href="/static/logo.png">
+<link rel="apple-touch-icon" href="/static/logo.png">
+<link rel="stylesheet" href="/static/style.css?v=5">
+</head>
+<body>
+<div class="grain"></div>
+
+<button class="lang-toggle" id="lang-toggle" type="button">عربي</button>
+
+<header class="masthead">
+  <img class="brand-logo" src="/static/logo.png" alt="SafeDocs">
+  <div class="wordmark">
+    <span class="name">SafeDocs</span>
+  </div>
+  <p class="tagline" data-i18n="tagline">Redact. Prove. Release.</p>
+</header>
+
+<main>
+  <!-- Step 1 — upload -->
+  <section class="panel" id="step-upload">
+    <div class="step-head"><span class="step-num" data-i18n="num1">1</span><h2 data-i18n="step1_title">Upload a document</h2></div>
+    <label class="drop" id="drop">
+      <input type="file" id="file" accept=".txt,.pdf" hidden>
+      <span class="drop-icon" aria-hidden="true">▤</span>
+      <span class="drop-main" data-i18n="drop_main">Drag a file here or click to choose</span>
+      <span class="drop-sub" data-i18n="drop_sub">PDF or TXT</span>
+    </label>
+    <button class="ghost" id="sample-btn" type="button" data-i18n="sample_btn">Load a sample document</button>
+  </section>
+
+  <!-- Step 2 — review -->
+  <section class="panel is-hidden" id="step-review">
+    <div class="step-head"><span class="step-num" data-i18n="num2">2</span><h2 data-i18n="step2_title">Review before redaction</h2></div>
+    <div class="review-meta" id="review-meta"></div>
+    <p class="hint" data-i18n="hint">Low-confidence items need your eyes. Uncheck anything you want to keep.</p>
+    <div class="selectbar">
+      <button class="link" id="sel-all" type="button" data-i18n="sel_all">Select all</button>
+      <span class="dot">·</span>
+      <button class="link" id="sel-none" type="button" data-i18n="sel_none">Select none</button>
+    </div>
+    <ul class="spanlist" id="spanlist"></ul>
+    <div class="actions">
+      <button class="primary" id="redact-btn" type="button">
+        <span class="btn-label" data-i18n="redact_btn">Redact &amp; sign</span>
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+      <button class="ghost" id="back-btn" type="button" data-i18n="back_btn">Back</button>
+    </div>
+  </section>
+
+  <!-- Step 3 — result -->
+  <section class="panel is-hidden" id="step-result">
+    <div class="step-head"><span class="step-num" data-i18n="num3">3</span><h2 data-i18n="step3_title">Cleared &amp; sealed</h2></div>
+    <div class="seal" id="seal">
+      <div class="seal-mark" aria-hidden="true">✓</div>
+      <div class="seal-text">
+        <strong data-i18n="seal_signed">Digitally signed</strong>
+        <span id="seal-detail">—</span>
+      </div>
+    </div>
+
+    <!-- What Nutrient DWS did (DWS path only) -->
+    <div class="dws-ops is-hidden" id="dws-ops">
+      <div class="dws-ops-head">
+        <span class="dws-badge">Nutrient DWS</span>
+        <span data-i18n="dws_ran">Ran on Nutrient DWS</span>
+      </div>
+      <ol id="dws-ops-list"></ol>
+    </div>
+
+    <pre class="preview" id="preview" dir="auto"></pre>
+
+    <!-- Trust / verify -->
+    <div class="verify" id="verify-box">
+      <div class="verify-row">
+        <span class="verify-state" id="verify-state">—</span>
+        <div class="verify-actions">
+          <button class="ghost sm" id="verify-btn" type="button" data-i18n="verify_btn">Verify</button>
+          <button class="ghost sm danger" id="tamper-btn" type="button" data-i18n="tamper_btn">Tamper</button>
+        </div>
+      </div>
+      <p class="verify-hint" data-i18n="verify_hint">The signature detects any change after clearance — try "Tamper" then "Verify".</p>
+    </div>
+
+    <div class="actions">
+      <a class="primary" id="dl-doc" download data-i18n="dl_doc">Download clean copy</a>
+      <a class="ghost" id="dl-proof" target="_blank" rel="noopener" data-i18n="dl_proof">Proof certificate</a>
+      <button class="ghost" id="again-btn" type="button" data-i18n="again_btn">Another document</button>
+    </div>
+  </section>
+</main>
+
+<div class="toast is-hidden" id="toast" role="alert"></div>
+
+<footer>
+  <span id="engine-badge" class="engine is-hidden">—</span>
+  <span class="foot-note" id="foot-note" data-i18n="foot_local"></span>
+</footer>
+
+<script src="/static/app.js?v=5"></script>
+</body>
+</html>
